@@ -17,10 +17,13 @@ def main() -> None:
 
     # utilização do algoritmo com k = 13 e distância euclidiana
     knn: KNearest = KNearest(13, data)
-    knn.predict(data[13], DistMethod.EUCLIDEAN)
+    knn.predict_single(data[13], DistMethod.EUCLIDEAN)
 
     # utilização do algoritmo com k = 13 e distância de manhattan
-    knn.predict(data[13], DistMethod.MANHATTAN)
+    knn.predict_single(data[13], DistMethod.MANHATTAN)
+
+    # utilização do algoritmo com k = 13 para várias instâncias e distância euclidiana
+    knn.predict(data[:15], DistMethod.EUCLIDEAN)
     return
 
 
