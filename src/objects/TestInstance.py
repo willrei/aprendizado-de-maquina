@@ -43,13 +43,9 @@ class TestInstance:
         min_arr = [min(attribs) for attribs in zipped_attribs]
 
         # normaliza os atributos utilizando min-max [0,1]
-        for attribs in attribs_arr:
-            for index, attrib in enumerate(attribs):
-                attribs[index] = (attrib - min_arr[index]) / (max_arr[index] - min_arr[index])
-
-        # armazena os atributos normalizados nos dados
-        for index, attribs in enumerate(attribs_arr):
-            self.data[index].attribs = attribs
+        for instance in self.data:
+            for index, attrib in enumerate(instance.attribs):
+                instance.attribs[index] = (attrib - min_arr[index]) / (max_arr[index] - min_arr[index])
         return None
 
     def run(self, k: int, dist_method: DistMethod = DistMethod.EUCLIDEAN) -> None:
