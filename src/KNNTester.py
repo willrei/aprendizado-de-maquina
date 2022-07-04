@@ -4,7 +4,7 @@ from src.objects.TestInstance import TestInstance
 
 def main() -> None:
     # criação de uma instância de teste a partir dos dados contidos no arquivo csv
-    # a instanciação padrão considera 70% da base (70 instâncias) para treino
+    # a instanciação padrão considera 80% da base (~80 instâncias) para treino
     test = TestInstance('smalldata.csv')
 
     # utilização do algoritmo com k = 13 e distância euclidiana

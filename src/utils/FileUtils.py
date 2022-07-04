@@ -1,5 +1,6 @@
 from csv import DictReader
 from pathlib import Path
+
 from src.objects.DataInstance import DataInstance
 
 

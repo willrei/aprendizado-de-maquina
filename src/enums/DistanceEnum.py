@@ -1,5 +1,6 @@
 from enum import Enum
 from functools import partial
+
 from src.utils import DistanceUtils
 
 
