@@ -1,4 +1,4 @@
-from src.KNN import KNN, DistMethod
+from src.objects.KNN import KNN, DistMethod
 from src.utils import FileUtils
 
 

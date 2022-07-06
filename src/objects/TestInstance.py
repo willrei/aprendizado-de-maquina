@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from random import randint
 from src.utils import FileUtils
-from src.KNN import KNN, DistMethod
+from src.objects.KNN import KNN, DistMethod
 
 
 class TestInstance:
@@ -74,7 +74,6 @@ class TestInstance:
     def run_many(self, k_list: list[int], dist_method: DistMethod = DistMethod.EUCLIDEAN,
                  filename: str = 'output.txt') -> None:
         """ Executa várias rodadas de teste do algoritmo. """
-        accuracy_list: list[tuple[int, float]] = []
         for k in k_list:
             accuracy = self.run(k, dist_method, filename)
             string: str = f'k = {k}, normalized = {self._normalized}, method = {dist_method.name}, ' \
@@ -85,11 +84,14 @@ class TestInstance:
     def run_repeat(self, k: int, repeats: int, dist_method: DistMethod = DistMethod.EUCLIDEAN,
                    filename: str = 'output.txt') -> None:
         """ Executa várias rodadas com os mesmos parâmetros e diferentes conjuntos de dados. """
+        # coleta da acurácia para cada rodada do algoritmo
         accuracy_list: list[float] = []
         for _ in range(repeats):
             self._split_data()
             accuracy_list.append(self.run(k, dist_method))
         accuracy_mean = sum(accuracy_list) / repeats
+
+        # escrita da acurácia média para cada rodada do algoritmo
         string: str = f'k = {k}, normalized = {self._normalized}, method = {dist_method.name}, ' \
                       f'accuracy mean = {accuracy_mean} [{repeats} repeats]\n'
         FileUtils.write_to_text(filename, [string])

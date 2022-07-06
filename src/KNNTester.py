@@ -1,4 +1,4 @@
-from src.KNN import DistMethod
+from src.objects.KNN import DistMethod
 from src.objects.TestInstance import TestInstance
 
 
