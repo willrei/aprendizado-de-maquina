@@ -1,0 +1,72 @@
+\documentclass{article}
+
+\usepackage[brazilian]{babel}
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{indentfirst}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\title{Aprendizado de Máquina - Atividade Prática Naïve Bayes}
+\author{Willian Reichert (134090)}
+\date{}
+
+\begin{document}
+\maketitle
+
+\subsection*{Análise do questionário}
+
+\textbf{a)} Verdadeiro, visto que essa é a ideia do algoritmo: a probabilidade condicional da ocorrência do valor de um atributo dada a ocorrência de uma classe específica leva em consideração apenas a quantidade de vezes que esse valor aparece dentre os dados pertencentes a essa classe.
+
+\medskip
+
+\textbf{b)} Verdadeiro. Como \(P(target = acc) = 0.4\) e \(P(target = unacc) = 0.6\), a probabilidade de uma instância ser da classe \emph{unacc} é maior. Esses valores podem ser calculados rapidamente pela divisão da quantidade de instâncias da cada classe pela quantidade total de instâncias.
+
+\medskip
+
+\textbf{c)} Verdadeiro. O cálculo é feito pela divisão da quantidade de instâncias de \emph{acc} que possuem o valor \emph{med} no atributo \emph{price} pela quantidade de instâncias de \emph{acc}, o que nos dá \(3/10\).
+
+\medskip
+
+\textbf{d)} Parcialmente falso. A instância será classificada pelo modelo como \emph{acc}, porém as probabilidades a posteriori de ambas as classes são diferentes: \(P(target = acc | x) = 0.0289\) e \(P(target = unacc | x) = 0.0249\). A implementação do algoritmo para esse dataset específico foi realizada em Python, e o código está no final desse relatório.
+
+\medskip
+
+\textbf{e)} Verdadeiro. Como não foi utilizada a correção de Laplace, a probabilidade \(P(safety = low | acc)\) é igual a zero, já que não há nenhuma instância de \emph{acc} com o atributo \emph{safety} igual a \emph{low}.
+
+\subsection*{Código}
+
+O código abaixo, implementado para a resolução dos três itens que envolvem cálculos, foi desenvolvido em Python 3.10 com a utilização da biblioteca Pandas. Ele também foi enviado pelo Moodle em um arquivo compactado juntamente com esse relatório.
+
+\lstinputlisting[language=Python]{naive_bayes.py}
+
+\end{document}
