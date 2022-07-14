@@ -1,4 +1,4 @@
-from src.objects.KNN import DistMethod
+from src.enums.DistanceEnum import DistMethod
 from src.objects.TestInstance import TestInstance
 
 
